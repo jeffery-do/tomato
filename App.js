@@ -9,44 +9,20 @@ import {
   Timer,
 } from 'react-native';
 import { Table, Row, Rows } from 'react-native-table-component';
+import timer from './timer.js';
 
 export default class App extends React.Component {
-  // function onPressTimer(){
-  //
-  // }
-  // <Timer>
-  // <Button
-  //   onPress={onPressTimer}
-  //   title="Pause"
-  //   color="#841584"
-  //   accessibilityLabel="Pause Pomodoro"
-  // />
-  //
-// //        {/*
-//         breakPomodoros
-//         pomodoros
-//         totalBreakTime
-//         totalTime
-//         */}
-
-// <Table>
-//   <Row data={['TotalFocusTime', mockedData.totalFocusTime]}/>
-//   <Row data={['Pomodoros', mockedData.Pomodoros]}/>
-//   <Row data={['TotalBreakTime', mockedData.totalBreakTime]}/>
-//   <Row data={['BreakPomodoros', mockedData.breakPomodoros]}/>
-// </Table>
-// <timer interval={1234567}>
-
   render() {
     return (
       <View>
         <Text> Hello World </Text>
-        // <Table>
-        //   <Row data={['TotalFocusTime', mockedData.totalFocusTime]}/>
-        //   <Row data={['Pomodoros', mockedData.Pomodoros]}/>
-        //   <Row data={['TotalBreakTime', mockedData.totalBreakTime]}/>
-        //   <Row data={['BreakPomodoros', mockedData.breakPomodoros]}/>
-        // </Table>
+        <Table>
+          <Row data={['TotalFocusTime', mockedData.totalFocusTime]}/>
+          <Row data={['Pomodoros', mockedData.pomodoros]}/>
+          <Row data={['TotalBreakTime', mockedData.totalBreakTime]}/>
+          <Row data={['BreakPomodoros', mockedData.breakPomodoros]}/>
+        </Table>
+        {/*<timer interval={1234567}*/}
       </View>
     );
   }
@@ -56,12 +32,12 @@ const mockedData = {
   totalFocusTime: 25*3,
   totalBreakTime: 5*3+15*1,
   pomodoros: 3,
-  breakPomodoros: 4, };
+  breakPomodoros: 4,
+};
 
 const styles = StyleSheet.create({
 
 });
-
 
 
 
