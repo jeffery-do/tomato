@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, Text, Math} from 'react-native';
-import moment from 'moment'
+import { Button, StyleSheet, Text } from 'react-native';
+import moment from 'moment';
 
-function timer({ interval }){
+function Timer({ interval }){
   const duration = moment.duration(interval)
-  const centiseconds = Math.floor(duration.milliseconds{}/10)
+  const centiseconds = Math.floor(duration.milliseconds()/10)
   return(
-    <Text style={styles.timer}>
-      {duration.minutes{}}:{duration.seconds{}},{centiseconds}
-    </Text>
+      <Text>
+        {duration.minutes()}:{duration.seconds()},{centiseconds}
+      </Text>
   )
 }
 
 const styles = StyleSheet.create({
   timer: {
     flex: 1,
-    align: center,
+    textAlign: 'center',
   },
 });
 
-
+export default Timer;
 //
 // <Button
 //   onPress={onPressLearnMore}

@@ -6,15 +6,27 @@ import {
   Image,
   ImageBackground,
   Button,
-  Timer,
 } from 'react-native';
 import { Table, Row, Rows } from 'react-native-table-component';
-import timer from './timer.js';
+import Timer from './timer.js';
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      start: 0,
+      now: 0,
+      laps: [],
+    }
+  }
+
+  start = () => {
+
+  }
+
   render() {
     return (
-      <View>
+      <View style={styles.main}>
         <Text> Hello World </Text>
         <Table>
           <Row data={['TotalFocusTime', mockedData.totalFocusTime]}/>
@@ -22,11 +34,22 @@ export default class App extends React.Component {
           <Row data={['TotalBreakTime', mockedData.totalBreakTime]}/>
           <Row data={['BreakPomodoros', mockedData.breakPomodoros]}/>
         </Table>
-        {/*<timer interval={1234567}*/}
+        <Timer interval={1234567}/>
+        <Text> XYZ </Text>
       </View>
     );
   }
 }
+
+// function Timer({ interval }){
+//   const duration = moment.duration(interval)
+//   const centiseconds = Math.floor(duration.milliseconds()/10)
+//   return(
+//       <Text style={styles.timer}>
+//         {duration.minutes()}:{duration.seconds()},{centiseconds}
+//       </Text>
+//   )
+// }
 
 const mockedData = {
   totalFocusTime: 25*3,
@@ -36,7 +59,9 @@ const mockedData = {
 };
 
 const styles = StyleSheet.create({
-
+    main: {
+      marginTop: 35,
+    }
 });
 
 
