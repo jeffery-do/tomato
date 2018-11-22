@@ -8,7 +8,9 @@ import {
   Button,
 } from 'react-native';
 import { Table, Row, Rows } from 'react-native-table-component';
-import Timer from './timer.js';
+import Timer from './Timer.js';
+import { Pomodoros, ShowPomodoros } from './Pomodoro.js'
+import TButton from './TButton.js'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -16,15 +18,35 @@ export default class App extends React.Component {
     this.state = {
       start: 0,
       now: 0,
-      laps: [],
+      pomodoros: 0,
+      pomodoroStepInMin: 1,
     }
   }
 
   start = () => {
-
+    const now = new Date().getTime()
+    this.setState({
+      start: now,
+      now,
+      pomodoros: 0,
+      pomodoroStepInMin: this.state.pomodoroStepInMin,
+    })
+    this.timer = setInterval(() => {
+      this.setState({
+        now: new Date().getTime(),
+      })
+    }, 100)
+    this.pomodoroCount = setInterval(() => {
+      this.setState({
+        pomodoros: Pomodoros(this.state.now - this.state.start, this.state.pomodoroStepInMin)
+      })
+    }, 1)
   }
+  //Pomodoros(now - this.state.start, this.state.pomodoroStepInMin)
 
   render() {
+    const { now, start, pomodoroStepInMin } = this.state
+    const timer = now - start
     return (
       <View style={styles.main}>
         <Text> Hello World </Text>
@@ -34,8 +56,11 @@ export default class App extends React.Component {
           <Row data={['TotalBreakTime', mockedData.totalBreakTime]}/>
           <Row data={['BreakPomodoros', mockedData.breakPomodoros]}/>
         </Table>
-        <Timer interval={1234567}/>
-        <Text> XYZ </Text>
+        <Timer interval={timer}/>
+        <ShowPomodoros num={this.state.pomodoros}/>
+        <TButton
+          onPress={this.start}
+        />
       </View>
     );
   }

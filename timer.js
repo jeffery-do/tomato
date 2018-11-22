@@ -13,10 +13,10 @@ function Timer({ interval }){
 }
 
 const styles = StyleSheet.create({
-  timer: {
-    flex: 1,
-    textAlign: 'center',
-  },
+  // timer: {
+  //   flex: 1,
+  //   textAlign: 'center',
+  // },
 });
 
 export default Timer;
