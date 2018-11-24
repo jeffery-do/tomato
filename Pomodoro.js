@@ -15,29 +15,34 @@ function ShowPomodoros({ num }){
   //   </Text>)
   // }
   return(
-    <View style={styles.pomodoroBox}>
-      <Text> Pomodoro Count: {num} </Text>
-    {[...Array(num)].map((x, i) =>
-        <View key={i}
-          style={[styles.outerCircle, {
-            width: 5 * 2,
-            height: 5 * 2,
-            borderRadius: 5,
-            flex: 1,
-            backgroundColor: 'grey',
-          }]}
-        />
-      )
-    }
+    <View>
+      <Text>Pomodoro Count: {num}</Text>
+      <View style={styles.pomodoroBox}>
+      {[...Array(num)].map((x, i) =>
+          <View key={i}
+            style={[styles.outerCircle, {
+              width: 5 * 2,
+              height: 5 * 2,
+              borderRadius: 5,
+              flex: 0,
+              backgroundColor: 'grey',
+            }]}
+          />
+        )
+      }
+      </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   pomodoroBox: {
-    height: 100,
+    height: 10,
     width: '100%',
     flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    flexWrap: 'wrap',
   }
   // timer: {
   //   flex: 1,

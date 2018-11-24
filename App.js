@@ -49,7 +49,7 @@ export default class App extends React.Component {
     const timer = now - start
     return (
       <View style={styles.main}>
-        <Text> Hello World </Text>
+        <Text>Hello World </Text>
         <Table>
           <Row data={['TotalFocusTime', mockedData.totalFocusTime]}/>
           <Row data={['Pomodoros', mockedData.pomodoros]}/>
@@ -86,6 +86,7 @@ const mockedData = {
 const styles = StyleSheet.create({
     main: {
       marginTop: 35,
+      paddingHorizontal: 5,
     }
 });
 

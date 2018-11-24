@@ -10,21 +10,21 @@ import {
 class TButton extends Component {
   constructor(props) {
     super(props)
-    this.state = { count: 0 }
+    this.state = { count: 1000 }
   }
 
-
- render() {
-   return (
-     <View style={styles.container}>
-       <TouchableOpacity
-         style={styles.button}
-         onPress={this.props.onPress}
-       >
-         <Text> Touch Here </Text>
-       </TouchableOpacity>
-       <View style={[styles.countContainer]}>
-         <Text style={[styles.countText]}>
+  render() {
+    return (
+      <View style={styles.container}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={this.props.onPress}
+        >
+          <Text>Touch Here</Text>
+        </TouchableOpacity>
+        <Text>xyz</Text>
+        <View style={[styles.countContainer]}>
+          <Text style={[styles.countText]}>
             { this.state.count !== 0 ? this.state.count: null}
           </Text>
         </View>
@@ -36,7 +36,7 @@ class TButton extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 10
+    // paddingHorizontal: 10
   },
   //Makes It Circular
   button: {
@@ -51,7 +51,9 @@ const styles = StyleSheet.create({
   },
   countContainer: {
     alignItems: 'center',
-    padding: 10
+    padding: 10,
+    width: 100,
+    height: 100,
   },
   countText: {
     color: '#FF00FF'
