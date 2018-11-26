@@ -18,6 +18,7 @@ class TButton extends Component {
       <View style={styles.container}>
         <TouchableOpacity
           style={styles.button}
+          //Customizable button
           onPress={this.props.onPress}
         >
           <Text>Touch Here</Text>
