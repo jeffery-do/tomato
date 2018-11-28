@@ -7,7 +7,7 @@ function Timer({ interval }){
   const centiseconds = Math.floor(duration.milliseconds()/10)
   return(
       <Text>
-        {duration.minutes()}:{duration.seconds()},{centiseconds}
+        {duration.minutes()}:{duration.seconds()}.{centiseconds}
       </Text>
   )
 }

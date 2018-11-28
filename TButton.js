@@ -21,13 +21,13 @@ class TButton extends Component {
           //Customizable button
           onPress={this.props.onPress}
         >
-          <Text>Touch Here</Text>
+          <Text>{this.props.text ? this.props.text : 'Touch Here'}</Text>
         </TouchableOpacity>
-        <Text>xyz</Text>
         <View style={[styles.countContainer]}>
           <Text style={[styles.countText]}>
             { this.state.count !== 0 ? this.state.count: null}
           </Text>
+          <Text>xyz</Text>
         </View>
       </View>
     )
@@ -36,7 +36,7 @@ class TButton extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0, // set flex to 0 to prevent overlapping of touchable opacity
     // paddingHorizontal: 10
   },
   //Makes It Circular

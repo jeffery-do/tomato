@@ -6,13 +6,24 @@ import {
   Image,
   ImageBackground,
   Button,
+  NavigatorIOS,
 } from 'react-native';
+import PropTypes from 'prop-types';
+
 import { Table, Row, Rows } from 'react-native-table-component';
 import Timer from './Timer.js';
 import { Pomodoros, ShowPomodoros } from './Pomodoro.js'
 import TButton from './TButton.js'
+import HelpScreen from './HelpScreen.js'
 
 class FlatMode extends Component {
+  static propTypes = {
+      route: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }),
+      navigator: PropTypes.object.isRequired,
+  };
+
   constructor(props) {
     super(props)
     this.state = {
@@ -21,6 +32,16 @@ class FlatMode extends Component {
       pomodoros: 0,
       pomodoroStepInMin: 1,
     }
+    this._onForward = this._onForward.bind(this);
+  }
+
+  _onForward() {
+    let nextIndex = ++this.props.index;
+    this.props.navigator.push({
+      component: HelpScreen,
+      title: 'Scene ' + nextIndex,
+      passProps: {index: nextIndex},
+    });
   }
 
   start = () => {
@@ -49,7 +70,12 @@ class FlatMode extends Component {
     const timer = now - start
     return (
       <View style={styles.main}>
-        <Text>Hello World </Text>
+        <Text>Current Scene: {this.props.title}</Text>
+        <Button
+          onPress={this._onForward}
+          title="Tap me to help screen"
+        />
+        <Text>Hello World</Text>
         <Table>
           <Row data={['TotalFocusTime', mockedData.totalFocusTime]}/>
           <Row data={['Pomodoros', mockedData.pomodoros]}/>
@@ -59,6 +85,11 @@ class FlatMode extends Component {
         <Timer interval={timer}/>
         <ShowPomodoros num={this.state.pomodoros}/>
         <TButton
+          text='Start Timer'
+          onPress={this.start}
+        />
+        <TButton
+          text='Next Screen'
           onPress={this.start}
         />
       </View>
