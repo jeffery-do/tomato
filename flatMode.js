@@ -12,9 +12,9 @@ import PropTypes from 'prop-types';
 
 import { Table, Row, Rows } from 'react-native-table-component';
 import Timer from './Timer.js';
-import { Pomodoros, ShowPomodoros } from './Pomodoro.js'
-import TButton from './TButton.js'
-import HelpScreen from './HelpScreen.js'
+import { Pomodoros, ShowPomodoros } from './Pomodoro.js';
+import TButton from './TButton.js';
+import HelpScreen from './HelpScreen.js';
 
 class FlatMode extends Component {
   static propTypes = {
@@ -24,7 +24,7 @@ class FlatMode extends Component {
       navigator: PropTypes.object.isRequired,
   };
 
-  constructor(props) {
+  constructor(props, context) {
     super(props)
     this.state = {
       start: 0,
@@ -36,11 +36,10 @@ class FlatMode extends Component {
   }
 
   _onForward() {
-    let nextIndex = ++this.props.index;
     this.props.navigator.push({
       component: HelpScreen,
-      title: 'Scene ' + nextIndex,
-      passProps: {index: nextIndex},
+      title: 'HelpScreen',
+      passProps: {title: 'HelpScreen'},
     });
   }
 
@@ -70,10 +69,9 @@ class FlatMode extends Component {
     const timer = now - start
     return (
       <View style={styles.main}>
-        <Text>Current Scene: {this.props.title}</Text>
         <Button
           onPress={this._onForward}
-          title="Tap me to help screen"
+          title=" Go To Help Screen"
         />
         <Text>Hello World</Text>
         <Table>
@@ -90,7 +88,7 @@ class FlatMode extends Component {
         />
         <TButton
           text='Next Screen'
-          onPress={this.start}
+          onPress={this._onForward}
         />
       </View>
     );
@@ -116,7 +114,7 @@ const mockedData = {
 
 const styles = StyleSheet.create({
     main: {
-      marginTop: 35,
+      marginTop: 90,
       paddingHorizontal: 5,
     }
 });

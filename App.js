@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { StyleSheet, Text, View, NavigatorIOS } from 'react-native';
 import FlatMode from './FlatMode.js';
 
@@ -9,7 +9,7 @@ import FlatMode from './FlatMode.js';
 //   }
 // }
 
-export default class NavigatorIOSApp extends React.Component {
+export default class NavigatorIOSApp extends Component {
   render() {
     return (
       <NavigatorIOS

@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, View, NavigatorIOS } from 'react-native';
+import React, {Component} from 'react';
+import { StyleSheet, Text, View, NavigatorIOS, Button } from 'react-native';
 import PropTypes from 'prop-types';
 import FlatMode from './FlatMode.js';
 
@@ -17,30 +17,31 @@ export default class HelpScreen extends Component {
       navigator: PropTypes.object.isRequired,
   };
 
-  constructor(props) {
+  constructor(props, context) {
     super(props)
     this._onForward = this._onForward.bind(this);
   }
 
   _onForward() {
-    let nextIndex = ++this.props.index;
     this.props.navigator.push({
       component: FlatMode,
-      title: 'Scene ' + nextIndex,
-      passProps: {index: nextIndex},
+      title: 'FlatMode',
+      passProps: {title: 'FlatMode'},
     });
   }
 
   render() {
     return (
       <View style={styles.main}>
-        <Text>Current Scene: {this.props.title}</Text>
-        <Button
-          onPress={this._onForward}
-          title="Tap me to go to Timer Screen"
-        />
-        <Text> Help </Text>
-        <Text> Welcome to he help screen! </Text>
+      <Button
+        onPress={this._onForward}
+        title="Go to Timer Screen"
+        style={styles.button}
+      />
+      <Text>Current Scene: {this.props.title}</Text>
+      <Text>Help</Text>
+      <Text>Welcome to the help screen!</Text>
+      <Text>Here is some help text</Text>
       </View>
     );
   }
@@ -65,7 +66,13 @@ const mockedData = {
 
 const styles = StyleSheet.create({
     main: {
-      marginTop: 35,
+      marginTop: 90,
       paddingHorizontal: 5,
+      flex: 1,
+    },
+    button: {
+      flex: 0,
+      width: 50,
+      height: 50,
     }
 });
