@@ -14,15 +14,8 @@ import { Table, Row, Rows } from 'react-native-table-component';
 import Timer from './Timer.js';
 import { Pomodoros, ShowPomodoros } from './Pomodoro.js';
 import TButton from './TButton.js';
-import HelpScreen from './HelpScreen.js';
 
 class FlatMode extends Component {
-  static propTypes = {
-      route: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }),
-      navigator: PropTypes.object.isRequired,
-  };
 
   constructor(props, context) {
     super(props)
@@ -32,15 +25,6 @@ class FlatMode extends Component {
       pomodoros: 0,
       pomodoroStepInMin: 1,
     }
-    this._onForward = this._onForward.bind(this);
-  }
-
-  _onForward() {
-    this.props.navigator.push({
-      component: HelpScreen,
-      title: 'HelpScreen',
-      passProps: {title: 'HelpScreen'},
-    });
   }
 
   start = () => {
@@ -62,17 +46,12 @@ class FlatMode extends Component {
       })
     }, 1)
   }
-  //Pomodoros(now - this.state.start, this.state.pomodoroStepInMin)
 
   render() {
     const { now, start, pomodoroStepInMin } = this.state
     const timer = now - start
     return (
       <View style={styles.main}>
-        <Button
-          onPress={this._onForward}
-          title=" Go To Help Screen"
-        />
         <Text>Hello World</Text>
         <Table>
           <Row data={['TotalFocusTime', mockedData.totalFocusTime]}/>
@@ -87,23 +66,13 @@ class FlatMode extends Component {
           onPress={this.start}
         />
         <TButton
-          text='Next Screen'
-          onPress={this._onForward}
+          text='Go To Help'
+          onPress={() => this.props.navigation.navigate('Help')}
         />
       </View>
     );
   }
 }
-
-// function Timer({ interval }){
-//   const duration = moment.duration(interval)
-//   const centiseconds = Math.floor(duration.milliseconds()/10)
-//   return(
-//       <Text style={styles.timer}>
-//         {duration.minutes()}:{duration.seconds()},{centiseconds}
-//       </Text>
-//   )
-// }
 
 const mockedData = {
   totalFocusTime: 25*3,
@@ -114,31 +83,9 @@ const mockedData = {
 
 const styles = StyleSheet.create({
     main: {
-      marginTop: 90,
+      marginTop: 0,
       paddingHorizontal: 5,
     }
 });
 
-// Timer
-// result of Timer
-// circle view (colored)
-//    - Pomodoro
-//    - Break Time
-// conversion of break time into break pomodoros
-// focus time
-
-// 5 minute 3 times
-// 15 minute 1 time
-
-
-// total time
-// or chunks
-
-// total time
-// chunked time as interface
-
-// how to test it
-// total time View
-// chunked time
-// mock data
 export default FlatMode;

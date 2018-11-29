@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, NavigatorIOS, Button } from 'react-native';
 import PropTypes from 'prop-types';
 import FlatMode from './FlatMode.js';
+import TButton from './TButton.js';
+
 
 
 // export default class App extends React.Component {
@@ -10,38 +12,21 @@ import FlatMode from './FlatMode.js';
 //   }
 // }
 export default class HelpScreen extends Component {
-  static propTypes = {
-      route: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }),
-      navigator: PropTypes.object.isRequired,
-  };
 
   constructor(props, context) {
     super(props)
-    this._onForward = this._onForward.bind(this);
-  }
-
-  _onForward() {
-    this.props.navigator.push({
-      component: FlatMode,
-      title: 'FlatMode',
-      passProps: {title: 'FlatMode'},
-    });
   }
 
   render() {
     return (
       <View style={styles.main}>
-      <Button
-        onPress={this._onForward}
-        title="Go to Timer Screen"
-        style={styles.button}
-      />
-      <Text>Current Scene: {this.props.title}</Text>
       <Text>Help</Text>
       <Text>Welcome to the help screen!</Text>
       <Text>Here is some help text</Text>
+      <TButton
+        text='Go To Home'
+        onPress={() => this.props.navigation.navigate('Home')}
+      />
       </View>
     );
   }
@@ -66,7 +51,7 @@ const mockedData = {
 
 const styles = StyleSheet.create({
     main: {
-      marginTop: 90,
+      marginTop: 0,
       paddingHorizontal: 5,
       flex: 1,
     },
