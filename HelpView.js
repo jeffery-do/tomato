@@ -4,11 +4,6 @@ import PropTypes from 'prop-types';
 import HomeView from './HomeView.js';
 import TButton from './TButton.js';
 
-// export default class App extends React.Component {
-//   render() {
-//     return <FlatMode/>;
-//   }
-// }
 export default class HelpScreen extends Component {
 
   constructor(props, context) {
@@ -29,16 +24,6 @@ export default class HelpScreen extends Component {
     );
   }
 }
-
-// function Timer({ interval }){
-//   const duration = moment.duration(interval)
-//   const centiseconds = Math.floor(duration.milliseconds()/10)
-//   return(
-//       <Text style={styles.timer}>
-//         {duration.minutes()}:{duration.seconds()},{centiseconds}
-//       </Text>
-//   )
-// }
 
 const mockedData = {
   totalFocusTime: 25*3,
