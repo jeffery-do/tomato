@@ -8,14 +8,13 @@ import {
   Button,
   NavigatorIOS,
 } from 'react-native';
-import PropTypes from 'prop-types';
 
 import { Table, Row, Rows } from 'react-native-table-component';
-import Timer from './Timer.js';
 import { Pomodoros, ShowPomodoros } from './Pomodoro.js';
 import TButton from './TButton.js';
+import Timer from './Timer.js';
 
-class FlatMode extends Component {
+class HomeView extends Component {
 
   constructor(props, context) {
     super(props)
@@ -88,4 +87,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default FlatMode;
+export default HomeView;

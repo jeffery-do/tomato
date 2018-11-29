@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import FlatMode from './FlatMode.js';
-import HelpScreen from './HelpScreen.js';
+import HomeView from './HomeView.js';
+import HelpView from './HelpView.js';
 
 const AppNavigator = createStackNavigator(
   {
     Home: {
-      screen: FlatMode
+      screen: HomeView
     },
     Help: {
-      screen: HelpScreen
+      screen: HelpView
     },
   },
   {

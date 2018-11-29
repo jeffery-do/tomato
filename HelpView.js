@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, NavigatorIOS, Button } from 'react-native';
 import PropTypes from 'prop-types';
-import FlatMode from './FlatMode.js';
+import HomeView from './HomeView.js';
 import TButton from './TButton.js';
-
-
 
 // export default class App extends React.Component {
 //   render() {
